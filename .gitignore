@@ -1,0 +1,18 @@
+# Simulation outputs
+*.vcd
+*.vvp
+*.out
+sim/
+*.log
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Synthesis
+*.json
+*.dot
+*_synth.v
