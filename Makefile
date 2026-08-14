@@ -17,6 +17,12 @@ sim:
 	@echo "Simulation completed. Waveform: sim/cpu.vcd"
 
 
+test:
+	mkdir -p sim
+	$(IVERILOG) -Wall -o sim/cpu.vvp $(RTL) $(TB)
+	$(VVP) sim/cpu.vvp
+
+
 wave:
 	$(GTKWAVE) sim/cpu.vcd &
 
@@ -25,4 +31,4 @@ clean:
 	rm -rf sim/*
 
 
-.PHONY: all sim wave clean
+.PHONY: all sim test wave clean
