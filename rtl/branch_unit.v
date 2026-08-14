@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module branch_unit (
     input  [2:0]  funct3,
     input  [31:0] rs1_data,

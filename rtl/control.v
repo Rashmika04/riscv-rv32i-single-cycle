@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module control (
     input  [6:0] opcode,
     input  [2:0] funct3,
