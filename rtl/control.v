@@ -10,19 +10,22 @@ module control (
     output reg       mem_write,
     output reg       alu_src,
     output reg       reg_write,
-    output reg       jump
+    output reg       jump,
+    output reg       jalr
 );
 
     always @(*) begin
 
-        branch    = 0;
-        mem_read  = 0;
+        // Default control signals
+        branch     = 0;
+        mem_read   = 0;
         mem_to_reg = 0;
-        alu_op    = 4'b0000;
-        mem_write = 0;
-        alu_src   = 0;
-        reg_write = 0;
-        jump      = 0;
+        alu_op     = 4'b0000;
+        mem_write  = 0;
+        alu_src    = 0;
+        reg_write  = 0;
+        jump       = 0;
+        jalr       = 0;
 
         case (opcode)
 
@@ -122,6 +125,17 @@ module control (
 
                 reg_write = 1;
                 jump      = 1;
+
+            end
+
+            // =================================================
+            // JALR
+            // =================================================
+            7'b1100111: begin
+
+                reg_write = 1;
+                jalr      = 1;
+                alu_src   = 1;
 
             end
 

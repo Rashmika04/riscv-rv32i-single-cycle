@@ -8,7 +8,7 @@ module instruction_memory (
     assign instruction = mem[addr[9:2]];
 
     initial begin
-      $readmemh("programs/jal.hex", mem);
+      $readmemh("programs/jalr.hex", mem);
     end
 
 endmodule
