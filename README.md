@@ -1,75 +1,76 @@
-# RISC-V RV32I Single-Cycle Core
+# RISC-V RV32I Single-Cycle Processor
 
-A Verilog implementation of a single-cycle RISC-V RV32I processor, developed and verified using Icarus Verilog and GTKWave.
+A complete single-cycle RISC-V RV32I processor implemented in Verilog and verified using automated instruction-level testbenches and GTKWave waveform analysis.
 
-The project implements the processor datapath, control logic, instruction and data memories, branching, and jump instructions, with program-based simulation and automated regression testing.
+**Author:** Rashmika Peddini  
+**Platform:** MacBook Air M2  
+**HDL:** Verilog  
+**Simulation:** Icarus Verilog  
+**Waveform Analysis:** GTKWave  
+**Development:** VS Code
 
-## Platform and Tools
+---
 
-- **HDL:** Verilog
-- **Simulator:** Icarus Verilog
-- **Waveform Viewer:** GTKWave
-- **IDE:** Visual Studio Code
-- **Platform:** MacBook Air M2
-- **Architecture:** RISC-V RV32I
-- **Author:** Rashmika Peddini
+## Overview
 
-## Processor Architecture
+This project implements a modular single-cycle RISC-V processor based on the RV32I instruction set.
 
-The processor consists of the following major components:
+The processor contains separate modules for:
 
-- Program Counter (PC)
-- Instruction Memory
-- Control Unit
+- Arithmetic Logic Unit (ALU)
 - Register File
 - Immediate Generator
-- ALU
-- Branch Unit
+- Control Unit
+- Instruction Memory
 - Data Memory
-- Next-PC Logic
-- Writeback Logic
+- Branch Unit
+- Program Counter / CPU datapath
 
-The processor follows a single-cycle datapath in which each instruction completes within one clock cycle.
+The design was developed incrementally and verified using dedicated testbenches for different instruction classes.
 
-## Supported Instructions
+---
 
-### Arithmetic and Logical
+## Implemented Features
 
-- ADD
-- SUB
-- AND
-- OR
-- XOR
-- SLT
-- SLL
-- SRL
-- SRA
+### Arithmetic and Logical Instructions
 
-### Immediate
+- `ADD`
+- `SUB`
+- `AND`
+- `OR`
+- `XOR`
+- `SLT`
+- `SLL`
+- `SRL`
+- `SRA`
 
-- ADDI
-- ANDI
-- ORI
-- XORI
-- SLTI
-- SLLI
-- SRLI
-- SRAI
+### Immediate Instructions
 
-### Memory
+- `ADDI`
+- `ANDI`
+- `ORI`
+- `XORI`
+- `SLTI`
+- `SLLI`
+- `SRLI`
+- `SRAI`
 
-- LW
-- SW
+### Branch Instructions
 
-### Branch
+- `BEQ`
+- `BNE`
 
-- BEQ
-- BNE
+### Memory Instructions
 
-### Jump
+- `LW`
+- `SW`
 
-- JAL
-- JALR
+### Jump Instructions
+
+- `JAL`
+- `JALR`
+
+---
 
 ## Project Structure
 
@@ -87,25 +88,29 @@ riscv-rv32i-single-cycle/
 │   └── regfile.v
 │
 ├── tb/
-│   ├── cpu_tb.v
 │   ├── arithmetic_tb.v
-│   ├── immediate_tb.v
 │   ├── branch_tb.v
-│   ├── memory_tb.v
+│   ├── cpu_tb.v
+│   ├── immediate_tb.v
 │   ├── jal_tb.v
-│   └── jalr_tb.v
+│   ├── jalr_tb.v
+│   └── memory_tb.v
 │
 ├── programs/
-│   ├── basic.hex
 │   ├── arithmetic.hex
-│   ├── immediate.hex
+│   ├── basic.hex
 │   ├── branch.hex
-│   ├── memory.hex
+│   ├── immediate.hex
 │   ├── jal.hex
-│   └── jalr.hex
+│   ├── jalr.hex
+│   └── memory.hex
 │
 ├── docs/
-├── scripts/
-├── sim/
+│   └── screenshots/
+│       ├── arithmetic_waveform.png
+│       └── processor_execution.png
+│
 ├── Makefile
-└── README.md
+├── README.md
+└── .gitignore
+
